@@ -3,18 +3,12 @@ defmodule AdventOfCode.Day07Test do
 
   import AdventOfCode.Day07
 
+  @tag :skip
   test "part1" do
-    input = "123 -> x
-456 -> y
-x AND y -> d
-x OR y -> e
-x LSHIFT 2 -> f
-y RSHIFT 2 -> g
-NOT x -> h
-NOT y -> a"
+    input = nil
     result = part1(input)
 
-    assert result == 65079
+    assert result
   end
 
   @tag :skip

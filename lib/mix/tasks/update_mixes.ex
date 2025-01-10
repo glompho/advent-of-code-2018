@@ -6,7 +6,7 @@ defmodule Mix.Tasks.UpdateMixes do
 
     File.write!(
       filename,
-      String.replace(input, "2015", "2015")
+      String.replace(input, ", 2015", "")
     )
   end
 

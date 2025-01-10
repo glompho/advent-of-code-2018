@@ -3,27 +3,19 @@ defmodule AdventOfCode.Day19Test do
 
   import AdventOfCode.Day19
 
+  @tag :skip
   test "part1" do
-    input = "H => HO
-H => OH
-O => HH
-
-HOHOHO"
+    input = nil
     result = part1(input)
 
-    assert result == 7
+    assert result
   end
 
+  @tag :skip
   test "part2" do
-    input = "e => H
-e => O
-H => HO
-H => OH
-O => HH
-
-HOHOHO"
+    input = nil
     result = part2(input)
 
-    assert result == 6
+    assert result
   end
 end

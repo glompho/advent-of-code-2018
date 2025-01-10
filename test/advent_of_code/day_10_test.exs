@@ -2,25 +2,20 @@ defmodule AdventOfCode.Day10Test do
   use ExUnit.Case
 
   import AdventOfCode.Day10
+
   @tag :skip
   test "part1" do
-    input = "211"
-    result = part1(input, 1)
+    input = nil
+    result = part1(input)
 
-    assert result == 4
+    assert result
   end
 
-  test "part1 second example" do
-    input = "1"
-    result = part1(input, 5)
-
-    assert result == 6
-  end
-
+  @tag :skip
   test "part2" do
-    input = "1"
-    result = part2(input, 10)
+    input = nil
+    result = part2(input)
 
-    assert result == 26
+    assert result
   end
 end

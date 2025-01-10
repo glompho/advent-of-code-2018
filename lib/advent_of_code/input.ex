@@ -13,7 +13,7 @@ defmodule AdventOfCode.Input do
   cache, it will be retrieved from the server if `allow_network?: true` is
   configured and your cookie is setup.
   """
-  def get!(day, year \\ nil)
+  def get!(day, year \\ Keyword.get(config(), :year))
   def get!(day, nil), do: get!(day, default_year())
 
   def get!(day, year) do
@@ -50,13 +50,10 @@ defmodule AdventOfCode.Input do
   defp from_cache!(day, year), do: File.read!(cache_path(day, year))
 
   defp download!(day, year) do
-    IO.puts("TEST")
-    IO.puts("https://adventofcode.com/#{year}/day/#{day}/input")
-
     {:ok, {{~c"HTTP/1.1", 200, ~c"OK"}, _, input}} =
       :httpc.request(
         :get,
-        {"https://adventofcode.com/#{year}/day/#{day}/input", headers()},
+        {~c"https://adventofcode.com/#{year}/day/#{day}/input", headers()},
         [],
         []
       )

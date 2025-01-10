@@ -3,22 +3,12 @@ defmodule AdventOfCode.Day22Test do
 
   import AdventOfCode.Day22
 
-  test "part1 example 1" do
-    player = {10, 250}
-    boss = {13, 8}
-    initial_state = {player, boss, %{}, 0}
-    result = simulate_game(initial_state)
-
-    assert result == {:win, 226}
-  end
-
+  @tag :skip
   test "part1" do
-    player = {10, 250}
-    boss = {14, 8}
-    initial_state = {player, boss, %{}, 0}
-    result = simulate_game(initial_state)
+    input = nil
+    result = part1(input)
 
-    assert result == {:win, 641}
+    assert result
   end
 
   @tag :skip

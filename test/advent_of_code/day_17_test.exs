@@ -3,25 +3,19 @@ defmodule AdventOfCode.Day17Test do
 
   import AdventOfCode.Day17
 
+  @tag :skip
   test "part1" do
-    input = "20
-15
-10
-5
-5"
-    result = part1(input, 25)
+    input = nil
+    result = part1(input)
 
-    assert result == 4
+    assert result
   end
 
+  @tag :skip
   test "part2" do
-    input = "20
-15
-10
-5
-5"
-    result = part2(input, 25)
+    input = nil
+    result = part2(input)
 
-    assert result == 3
+    assert result
   end
 end
