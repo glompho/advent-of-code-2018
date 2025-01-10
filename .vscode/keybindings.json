@@ -1,0 +1,6 @@
+{
+    "key": "ctrl+alt+r",
+    
+    "command": "mix: Run tests",
+    "args": "Run tests"
+  }
