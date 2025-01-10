@@ -1,7 +1,7 @@
 defmodule AdventOfCode.Day08 do
-  def part1(_args) do
+  def part1(_input) do
   end
 
-  def part2(_args) do
+  def part2(_input) do
   end
 end
