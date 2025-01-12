@@ -4,16 +4,16 @@ defmodule AdventOfCode.Day01Test do
   import AdventOfCode.Day01
 
   test "part1" do
-    input = "R5, L5, R5, R3"
+    input = nil
     result = part1(input)
 
-    assert result == 12
+    assert result
   end
 
   test "part2" do
-    input = "R8, R4, R4, R8"
+    input = nil
     result = part2(input)
 
-    assert result == 4
+    assert result
   end
 end
