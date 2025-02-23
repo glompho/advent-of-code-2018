@@ -22,8 +22,7 @@ defmodule AdventOfCode.MixProject do
   defp deps do
     [
       {:benchee, "~> 1.0"},
-      {:ssl_verify_fun, "~> 1.1.7", manager: :rebar3, override: true},
-      {:jason, "~> 1.4"}
+      {:ssl_verify_fun, "~> 1.1.7", manager: :rebar3, override: true}
     ]
   end
 end
