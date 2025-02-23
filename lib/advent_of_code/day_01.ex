@@ -6,11 +6,8 @@ defmodule AdventOfCode.Day01 do
   end
 
   def part2(input) do
-    incs =
-      Regex.scan(~r/-?\d+/, input)
-      |> Enum.map(fn [str] -> String.to_integer(str) end)
-
-    incs
+    Regex.scan(~r/-?\d+/, input)
+    |> Enum.map(fn [str] -> String.to_integer(str) end)
     |> Stream.cycle()
     |> Stream.scan(&(&1 + &2))
     |> Enum.reduce_while(MapSet.new(), fn freq, seen ->
