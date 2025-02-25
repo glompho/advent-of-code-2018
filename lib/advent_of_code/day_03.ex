@@ -22,9 +22,9 @@ defmodule AdventOfCode.Day03 do
   end
 
   def part1(input) do
-    claims = parse(input)
-
-    Enum.reduce(claims, %{}, &add_claim/2)
+    input
+    |> parse()
+    |> Enum.reduce(%{}, &add_claim/2)
     |> Map.values()
     |> Enum.count(&(&1 > 1))
   end
