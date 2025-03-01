@@ -10,11 +10,12 @@ defmodule AdventOfCode.Day09Test do
     assert result == 32
   end
 
-  @tag :skip
   test "part1 second test" do
+    #
     input = "10 players; last marble is worth 1618 points"
     result = part1(input)
 
+    #
     assert result == 8317
   end
 
