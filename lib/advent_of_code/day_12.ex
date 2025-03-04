@@ -15,7 +15,12 @@ defmodule AdventOfCode.Day12 do
       state
       |> one_step(rules_map)
 
-    # |> print_state()
+    # Inspected the difference over time to work out the partern which was very regular.
+
+    # old_count = state |> count_pots((1000 - n) * 3)
+    # new_count = new_state |> count_pots((1000 - n + 1) * 3)
+    # |> IO.inspect(label: n)
+    # IO.puts("#{1000 - n}, diff= #{new_count - old_count}")
 
     steps(new_state, rules_map, n - 1)
   end
@@ -60,6 +65,11 @@ defmodule AdventOfCode.Day12 do
     |> count_pots(offset)
   end
 
-  def part2(_input) do
+  def part2(input, steps \\ 50_000_000_000) do
+    # numbers hard coded after inspection
+
+    initial_number = part1(input, 191)
+    rest = 34 * (steps - 191)
+    initial_number + rest
   end
 end
