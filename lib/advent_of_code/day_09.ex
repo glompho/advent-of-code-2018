@@ -80,16 +80,7 @@ defmodule DoubleLinkedList do
   end
 
   def to_list(dll, acc, start) do
-    # IO.inspect({map_size(dll.nodes), length(acc), acc})
-    # IO.gets("break")
-
-    # IO.inspect(dll)
     current = access(dll)
-    # IO.inspect(current)
-
-    # if current.value in acc do
-    #  IO.inspect("CYCLE PROBLEM")
-    # end
 
     next_state = dll |> next_node()
     to_list(next_state, [current.value | acc], start)
@@ -98,8 +89,7 @@ end
 
 defmodule AdventOfCode.Day09 do
   import DoubleLinkedList
-  # to do
-  # update to use dll.
+
   def pretty_print(player_id, game_state, index) do
     pretty_state =
       game_state
@@ -117,41 +107,6 @@ defmodule AdventOfCode.Day09 do
   end
 
   def simulate(players, final_score) do
-    1..final_score
-    |> Enum.reduce({%{}, [0], 0}, fn score, {player_scores, game_state, index} ->
-      player_id = rem(score - 1, players) + 1
-      marbles_in_play = length(game_state)
-
-      cond do
-        rem(score, 23) == 0 ->
-          new_index = Integer.mod(index - 7, marbles_in_play)
-          seven_ccw = Enum.at(game_state, new_index)
-          IO.inspect({"score", score, seven_ccw})
-          new_game_state = List.delete_at(game_state, new_index)
-
-          new_player_scores =
-            player_scores
-            |> Map.update(player_id, score + seven_ccw, &(&1 + score + seven_ccw))
-
-          pretty_print(player_id, game_state, new_index)
-          pretty_print(player_id, new_game_state, new_index)
-          # IO.gets("break")
-          {new_player_scores, new_game_state, new_index}
-
-        true ->
-          new_index = Integer.mod(index + 1, marbles_in_play)
-          new_game_state = List.insert_at(game_state, new_index + 1, score)
-          # IO.inspect({score, Enum.at(game_state, new_index)})
-          pretty_print(player_id, new_game_state, new_index)
-          {player_scores, new_game_state, new_index + 1}
-      end
-    end)
-    |> elem(0)
-    |> Map.values()
-    |> Enum.max()
-  end
-
-  def simulate2(players, final_score) do
     start_state = %DoubleLinkedList{} |> insert(0)
 
     1..final_score
@@ -160,35 +115,21 @@ defmodule AdventOfCode.Day09 do
 
       cond do
         rem(score, 23) == 0 ->
-          # IO.inspect(game_state)
           seven_ccw = prev_node(game_state, 7)
 
           seven_ccw_value = seven_ccw |> access() |> Map.get(:value)
 
           new_game_state = delete_current(seven_ccw)
-          # IO.inspect({"score (method 2)", score, seven_ccw_value})
-          # lst1 = to_list(game_state)
-          # lst2 = to_list(new_game_state)
-          # pretty_print(player_id, lst1, game_state.index)
-          # pretty_print(player_id, lst2, new_game_state.index)
 
           new_player_scores =
             player_scores
             |> Map.update(player_id, score + seven_ccw_value, &(&1 + score + seven_ccw_value))
 
-          # pretty_print(player_id, new_game_state, new_index)
-          # IO.gets("break")
           {new_player_scores, new_game_state}
 
         true ->
-          # IO.inspect(access(game_state))
-          # IO.inspect(access(next_node(game_state)))
-          # IO.inspect(game_state.nodes)
           new_game_state = game_state |> next_node() |> insert(score)
-          # lst = to_list(new_game_state)
-          # IO.inspect({score, game_state |> access() |> Map.get(:value)})
 
-          # pretty_print(player_id, lst, new_game_state.index)
           {player_scores, new_game_state}
       end
     end)
@@ -202,17 +143,11 @@ defmodule AdventOfCode.Day09 do
     |> Enum.map(fn [str] -> String.to_integer(str) end)
   end
 
-  def part1(input) do
+  def part1(input, mult \\ 1) do
     [players, final_score] = parse(input)
 
-    # simulate(players, final_score)
-
-    simulate2(players, final_score)
+    simulate(players, final_score * mult)
   end
 
-  def part2(input) do
-    [players, final_score] = parse(input)
-
-    simulate2(players, final_score * 100)
-  end
+  def part2(input), do: part1(input, 100)
 end
